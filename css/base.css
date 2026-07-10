@@ -66,7 +66,7 @@ body {
   background-size: auto, 720px 720px, auto, auto;
   color: #1f2020;
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 300;
   overflow-x: hidden;
 }
 body.nav-open { overflow: hidden; }
@@ -110,36 +110,9 @@ h3.display { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--taupe);
+  color: var(--gold-deep);
 }
-.eyebrow--onDark { color: var(--muted-on-dark); }
-
-/* Signature: bilingual ghost words. One oversized Amiri word per section,
-   mirrored to an English italic when the site is browsed in Arabic. Doubled
-   class beats the section child resets without !important. */
-.ghost-word.ghost-word {
-  position: absolute;
-  z-index: 0;
-  inset-inline-end: clamp(-1.5rem, -1vw, -0.5rem);
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Amiri', var(--font-display), serif;
-  font-weight: 700;
-  font-size: clamp(7rem, 16vw, 14rem);
-  line-height: 1;
-  color: currentColor;
-  opacity: 0.05;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-.ghost-word--deep.ghost-word { z-index: -1; }
-body.is-arabic .ghost-word.ghost-word {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 500;
-}
-.has-ghost { position: relative; overflow: hidden; }
+.eyebrow--onDark { color: var(--gold); }
 
 .lede { font-size: clamp(1.02rem, 1.04vw, 1.2rem); line-height: 1.72; color: #3a3d3d; font-weight: 300; }
 .accent { color: var(--rust); font-style: italic; }
@@ -287,7 +260,7 @@ body.nav-open .nav-toggle span:nth-child(3) { top: 9px; transform: rotate(-45deg
 .footer-checklist li { display: flex; align-items: center; gap: 0.9rem; font-size: 0.92rem; color: var(--muted-on-dark); }
 .footer-checklist li::before { content: "→"; color: var(--gold); }
 .footer-main { padding-block: clamp(2.3rem, 3vw, 3.5rem); display: grid; grid-template-columns: 1.1fr 1.35fr 0.9fr; gap: 2.5rem; }
-.footer-col h4 { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted-on-dark); margin-bottom: 1.3rem; font-weight: 500; }
+.footer-col h4 { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; font-weight: 400; }
 .footer-col a, .footer-col p { color: var(--muted-on-dark); font-size: 0.9rem; display: block; margin-bottom: 0.7rem; transition: color 0.35s var(--ease); }
 .footer-col a:hover { color: var(--gold-soft); }
 .footer-brand .brand-name { color: var(--ivory); }
@@ -684,6 +657,24 @@ html[dir="rtl"] li {
 }
 
 /* ---------- Premium Motion Layer ---------- */
+.premium-aura {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 34rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate3d(calc(var(--aura-x, -1000px) - 50%), calc(var(--aura-y, -1000px) - 50%), 0);
+  background:
+    radial-gradient(circle, rgba(198,161,91,0.18), rgba(198,161,91,0.08) 22%, transparent 62%);
+  mix-blend-mode: screen;
+  opacity: 0.38;
+  filter: blur(18px);
+  transition: opacity 0.45s var(--ease);
+}
+
 [data-tilt] {
   transform: perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
   transform-style: preserve-3d;
@@ -748,6 +739,10 @@ html[dir="rtl"] li {
 }
 
 @media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .premium-aura {
+    display: none;
+  }
+
   [data-tilt] {
     transform: none !important;
   }
