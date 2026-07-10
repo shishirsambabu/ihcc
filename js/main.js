@@ -1,5 +1,5 @@
 /* ==========================================================================
-   IMPACT-HCC — main.js
+   IMPACT HCC — main.js
    Shared interactions: smooth scroll, reveal, count-up, header, nav, parallax
    Dependency-free (no build step). Loaded on every page with `defer`.
    ========================================================================== */
@@ -98,7 +98,7 @@
       'Transformation programs delivered': 'برامج تحول تم تنفيذها',
       'Countries supported worldwide': 'دول ندعمها حول العالم',
       'Years of advisory excellence and trust': 'سنوات من التميز والثقة الاستشارية',
-      'IMPACT-HCC challenged the way we think about leadership and built the capability architecture we needed to scale with confidence.': 'غيّرت IMPACT-HCC طريقة تفكيرنا في القيادة، وبنت لنا بنية القدرات التي احتجناها للتوسع بثقة.',
+      'IMPACT HCC challenged the way we think about leadership and built the capability architecture we needed to scale with confidence.': 'غيّرت IMPACT HCC طريقة تفكيرنا في القيادة، وبنت لنا بنية القدرات التي احتجناها للتوسع بثقة.',
       'Chief People Officer': 'الرئيس التنفيذي للموارد البشرية',
       'Global Financial Services Firm': 'شركة خدمات مالية عالمية',
       'Trusted by forward-thinking leaders': 'موثوقون لدى قادة يستشرفون المستقبل',
@@ -120,11 +120,11 @@
       'Explore opportunities': 'استكشاف الفرص',
       'Diagnose + Build + Integrate + Excel': 'تشخيص + بناء + دمج + تميز',
       'Drive measurable impact': 'تحقيق أثر قابل للقياس',
-      'IMPACT-HCC. All rights reserved.': 'جميع الحقوق محفوظة لـ IMPACT-HCC.',
-      'IMPACT-HCC. All Rights Reserved.': 'جميع الحقوق محفوظة لـ IMPACT-HCC.',
+      'IMPACT HCC. All rights reserved.': 'جميع الحقوق محفوظة لـ IMPACT HCC.',
+      'IMPACT HCC. All Rights Reserved.': 'جميع الحقوق محفوظة لـ IMPACT HCC.',
 
-      'About IMPACT-HCC': 'عن IMPACT-HCC',
-      'Impact-HCC is a Dubai-based boutique firm led by immensely talented HR Experts, who are recognized by the industry as': 'IMPACT-HCC شركة متخصصة مقرها دبي يقودها خبراء موارد بشرية موهوبون ومعترف بهم في القطاع بوصفهم',
+      'About IMPACT HCC': 'عن IMPACT HCC',
+      'Impact HCC is a Dubai-based boutique firm led by immensely talented HR Experts, who are recognized by the industry as': 'IMPACT HCC شركة متخصصة مقرها دبي يقودها خبراء موارد بشرية موهوبون ومعترف بهم في القطاع بوصفهم',
       'knowledge leaders': 'قادة معرفة',
       'Within a couple of years the team managed to successfully expand its operations to embark on another chapter.': 'خلال سنوات قليلة، نجح الفريق في توسيع عملياته والانتقال إلى فصل جديد من النمو.',
       'As a team, we pride ourselves in constantly endeavoring into challenging projects, that require us to innovate and respect our clients in their respective transformational journeys needed to sustain their competitive edge in a continuously and rapidly changing and evolving business environment.': 'نفتخر كفريق بخوض مشاريع تتطلب الابتكار واحترام رحلة كل عميل في التحول، بما يساعده على الحفاظ على ميزته التنافسية في بيئة أعمال تتغير وتتطور بسرعة.',
@@ -146,7 +146,7 @@
 
       'Advisory Services': 'الخدمات الاستشارية',
       'Our Services': 'خدماتنا',
-      'At IMPACT-HCC, we architect human capital solutions that strengthen capability, elevate leadership, and build cultures that perform—today and for the future.': 'في IMPACT-HCC، نصمم حلول رأس مال بشري تعزز القدرات، وترتقي بالقيادة، وتبني ثقافات تؤدي اليوم وللمستقبل.',
+      'At IMPACT HCC, we architect human capital solutions that strengthen capability, elevate leadership, and build cultures that perform—today and for the future.': 'في IMPACT HCC، نصمم حلول رأس مال بشري تعزز القدرات، وترتقي بالقيادة، وتبني ثقافات تؤدي اليوم وللمستقبل.',
       'Our services are tailored to your goals, your people, and your strategy—designed to deliver measurable, lasting impact.': 'خدماتنا مصممة وفق أهدافك وأفرادك واستراتيجيتك، لتحقيق أثر ملموس ومستدام.',
       'Aligning talent, leadership, and transformation to': 'مواءمة المواهب والقيادة والتحول من أجل',
       'build organizations that thrive.': 'بناء منظمات تزدهر.',
@@ -178,7 +178,7 @@
       'We deliver measurable impact aligned to your strategic objectives.': 'نحقق أثراً قابلاً للقياس ومتوافقاً مع أهدافكم الاستراتيجية.',
 
       'Trusted Partnerships': 'شراكات موثوقة',
-      'IMPACT-HCC is trusted by leading organizations across government, healthcare, hospitality, aviation, retail, and enterprise. Together, we shape leadership, build capability, and elevate human performance where it matters most.': 'تحظى IMPACT-HCC بثقة منظمات رائدة في الحكومة والرعاية الصحية والضيافة والطيران والتجزئة والمؤسسات. معاً نشكل القيادة ونبني القدرات ونرتقي بالأداء البشري حيث يكون الأثر أكبر.',
+      'IMPACT HCC is trusted by leading organizations across government, healthcare, hospitality, aviation, retail, and enterprise. Together, we shape leadership, build capability, and elevate human performance where it matters most.': 'تحظى IMPACT HCC بثقة منظمات رائدة في الحكومة والرعاية الصحية والضيافة والطيران والتجزئة والمؤسسات. معاً نشكل القيادة ونبني القدرات ونرتقي بالأداء البشري حيث يكون الأثر أكبر.',
       'A portfolio of organizations who trust us to shape': 'محفظة من المنظمات التي تثق بنا في تشكيل',
       'leadership, capability, and human performance.': 'القيادة والقدرات والأداء البشري.',
       'Government': 'الحكومة',
@@ -204,7 +204,7 @@
       'Trusted across the UAE, the GCC, and beyond.': 'ثقة تمتد عبر الإمارات والخليج وما بعدهما.',
       'Long-Term': 'طويلة الأمد',
       'Built on impact, integrity, and shared success.': 'مبنية على الأثر والنزاهة والنجاح المشترك.',
-      'IMPACT-HCC has been a true partner in our journey of transformation. Their deep understanding of people, leadership, and organizational performance sets them apart.': 'كانت IMPACT-HCC شريكاً حقيقياً في رحلة تحولنا. إن فهمهم العميق للأفراد والقيادة والأداء المؤسسي يميزهم.',
+      'IMPACT HCC has been a true partner in our journey of transformation. Their deep understanding of people, leadership, and organizational performance sets them apart.': 'كانت IMPACT HCC شريكاً حقيقياً في رحلة تحولنا. إن فهمهم العميق للأفراد والقيادة والأداء المؤسسي يميزهم.',
       '— Human Capital Leader, Government Sector': '— قائد رأس مال بشري، القطاع الحكومي',
 
       'Strategic Alliances': 'تحالفات استراتيجية',
@@ -218,7 +218,7 @@
       'leaders building': 'قادة يبنون',
       "what's": 'ما هو',
       'next.': 'قادم.',
-      'Perspectives on leadership, organizational performance, talent, and the future of work — from the advisors architecting human performance at IMPACT-HCC.': 'رؤى حول القيادة، والأداء المؤسسي، والمواهب، ومستقبل العمل من مستشارين يصممون الأداء البشري في IMPACT-HCC.',
+      'Perspectives on leadership, organizational performance, talent, and the future of work — from the advisors architecting human performance at IMPACT HCC.': 'رؤى حول القيادة، والأداء المؤسسي، والمواهب، ومستقبل العمل من مستشارين يصممون الأداء البشري في IMPACT HCC.',
       'Featured': 'مميز',
       'All Perspectives': 'كل الرؤى',
       'The full library.': 'المكتبة الكاملة.',
@@ -263,23 +263,36 @@
       'Advisory requests': 'طلبات الاستشارات',
       'Speaking engagements': 'طلبات التحدث',
       'Executive Humanism.': 'إنسانية تنفيذية.',
-      'Measurable Impact.': 'أثر قابل للقياس.'
+      'Measurable Impact.': 'أثر قابل للقياس.',
+
+      'Organizations served': 'منظمات نخدمها',
+      'Industry sectors': 'قطاعات صناعية',
+      'Advisory service lines': 'خدمات استشارية',
+      'Global hubs — Dubai & Barcelona': 'مقران عالميان — دبي وبرشلونة',
+      'IMPACT HCC — Legal': 'IMPACT HCC — الشؤون القانونية',
+      'Skip to content': 'انتقل إلى المحتوى'
     }
   };
 
+  // Extra dictionary entries shipped per-page (the 11 service pages include
+  // js/i18n-ar.js, generated from the canonical service content).
+  if (window.IMPACT_I18N_EXTRA) Object.assign(i18n.ar, window.IMPACT_I18N_EXTRA);
+
   const titleTranslations = {
     ar: {
-      'IMPACT-HCC — Human Capital Strategy for Organizations Ready to Perform Differently': 'IMPACT-HCC — استراتيجية رأس المال البشري لمنظمات مستعدة لأداء مختلف',
-      'IMPACT-HCC — Human Capital Strategy for Organizations Ready to Perform Differently': 'IMPACT-HCC — استراتيجية رأس المال البشري لمنظمات مستعدة لأداء مختلف',
-      'About IMPACT-HCC — A Dubai-Based Boutique Human Capital Consultancy': 'عن IMPACT-HCC — شركة متخصصة في استشارات رأس المال البشري بدبي',
-      'Advisory Services — IMPACT-HCC': 'الخدمات الاستشارية — IMPACT-HCC',
-      'Our Clients — IMPACT-HCC': 'عملاؤنا — IMPACT-HCC',
-      'Our Partners — IMPACT-HCC': 'شركاؤنا — IMPACT-HCC',
-      'Insights — IMPACT-HCC': 'الرؤى — IMPACT-HCC',
-      'Contact Us — IMPACT-HCC': 'تواصل معنا — IMPACT-HCC',
-      'Page Not Found — IMPACT-HCC': 'الصفحة غير موجودة — IMPACT-HCC'
+      'IMPACT HCC — Human Capital Consultancy · Dubai & Barcelona': 'IMPACT HCC — استشارات رأس المال البشري · دبي وبرشلونة',
+      'About IMPACT HCC — A Dubai-Based Boutique Human Capital Consultancy': 'عن IMPACT HCC — شركة متخصصة في استشارات رأس المال البشري بدبي',
+      'Advisory Services — IMPACT HCC': 'الخدمات الاستشارية — IMPACT HCC',
+      'Our Clients — IMPACT HCC': 'عملاؤنا — IMPACT HCC',
+      'Our Partners — IMPACT HCC': 'شركاؤنا — IMPACT HCC',
+      'Insights — IMPACT HCC': 'الرؤى — IMPACT HCC',
+      'Contact Us — IMPACT HCC': 'تواصل معنا — IMPACT HCC',
+      'Page Not Found — IMPACT HCC': 'الصفحة غير موجودة — IMPACT HCC',
+      'Privacy Policy — IMPACT HCC': 'سياسة الخصوصية — IMPACT HCC',
+      'Terms & Conditions — IMPACT HCC': 'الشروط والأحكام — IMPACT HCC'
     }
   };
+  if (window.IMPACT_I18N_TITLES) Object.assign(titleTranslations.ar, window.IMPACT_I18N_TITLES);
 
   const originalText = new WeakMap();
   const originalAttrs = new WeakMap();
@@ -361,6 +374,24 @@
     btn.querySelector('[data-lang-option="ar"]').classList.toggle('is-active', isArabic);
   };
 
+  /* Whole-headline Arabic for line-mask heroes. A per-fragment dictionary
+     cannot reorder words across lines, so heroes that need proper Arabic
+     carry the full translated headline as JSON in data-ar-lines. */
+  const heroOriginal = new WeakMap();
+  const applyHeroLines = (lang) => {
+    document.querySelectorAll('.reveal-lines[data-ar-lines]').forEach((el) => {
+      if (!heroOriginal.has(el)) heroOriginal.set(el, el.innerHTML);
+      if (lang === 'ar') {
+        try {
+          const lines = JSON.parse(el.dataset.arLines);
+          el.innerHTML = lines.map((l) => `<span class="line"><span>${l}</span></span>`).join('');
+        } catch (e) { /* malformed attribute — keep the English lines */ }
+      } else {
+        el.innerHTML = heroOriginal.get(el);
+      }
+    });
+  };
+
   const applyLanguage = (lang, options = {}) => {
     currentLanguage = lang === 'ar' ? 'ar' : 'en';
     document.documentElement.lang = currentLanguage === 'ar' ? 'ar' : 'en';
@@ -377,6 +408,7 @@
       ? titleTranslations.ar[sourceTitle]
       : sourceTitle;
 
+    applyHeroLines(currentLanguage);
     translateTextNodes(currentLanguage);
     translateAttributes(currentLanguage);
     updateLanguageSwitch();
@@ -409,13 +441,24 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Mobile nav ---------- */
+  /* ---------- Mobile nav (aria-synced, Escape to close, scroll-locked) ---------- */
   const toggle = document.querySelector('.nav-toggle');
   if (toggle) {
-    toggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+    const setNav = (open) => {
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+    };
+    toggle.addEventListener('click', () => setNav(!document.body.classList.contains('nav-open')));
     document.querySelectorAll('.nav-links a').forEach(a =>
-      a.addEventListener('click', () => document.body.classList.remove('nav-open'))
+      a.addEventListener('click', () => setNav(false))
     );
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+        setNav(false);
+        toggle.focus();
+      }
+    });
   }
 
   /* ---------- Scroll reveal (IntersectionObserver) ---------- */

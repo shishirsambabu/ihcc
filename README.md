@@ -1,63 +1,85 @@
-# IMPACT-HCC — Human Capital Consultancy Website
+# IMPACT HCC — Human Capital Consultancy
 
-A luxury, editorial, fully-animated marketing site recreated from the design reference.
-**Tagline:** *Executive Humanism. Measurable Impact.*
-
-Static HTML/CSS/JS — **zero build step**, deploys anywhere. Dependency-free animations (no framework).
+Marketing website for IMPACT Human Capital Consultancy (Dubai · Barcelona).
+Static HTML/CSS/JS — no build step, deploys on any static host.
 
 ## Pages
+
 | File | Page |
 |------|------|
 | `index.html` | Home |
 | `about.html` | About Us |
-| `services.html` | Advisory Services (11 services) |
+| `services.html` | Advisory Services (index of 11) |
+| `service-*.html` | 11 standalone service pages (static content) |
 | `clients.html` | Our Clients |
 | `partners.html` | Our Partners |
-| `insights.html` | Insights |
-| `contact.html` | Contact Us (live embedded Google Map) |
+| `insights.html` | Insights (listing) |
+| `insight-*.html` | 6 Insights articles |
+| `contact.html` | Contact Us (embedded Google Map) |
+| `privacy.html`, `terms.html` | Legal |
 | `404.html` | Not-found page |
 
 ## Structure
+
 ```
-website/
-├── index.html … contact.html, 404.html
+├── index.html … 404.html
 ├── css/
-│   ├── base.css        # design system: tokens, header, footer, buttons, animations (shared)
+│   ├── base.css        # design system: tokens, header, footer, buttons, animations
 │   └── <page>.css      # one stylesheet per page
-├── js/main.js          # shared interactions (reveal, count-up, parallax, nav, magnetic btns)
-├── assets/images/      # drop generated images here (see IMAGE_PROMPTS.md)
-├── favicon.svg
+├── js/
+│   ├── main.js         # shared interactions + EN/AR runtime dictionary
+│   └── i18n-ar.js      # Arabic strings for the 11 service pages
+├── assets/images/      # photography + client logos
 ├── robots.txt, sitemap.xml
-├── netlify.toml, vercel.json   # deploy configs (pretty URLs, caching, headers)
-├── IMAGE_PROMPTS.md    # ChatGPT prompts to generate every image asset
-└── BUILD_BRIEF.md      # internal build spec (can be deleted before deploy)
+└── netlify.toml, vercel.json   # deploy configs
 ```
 
 ## Design system
-- **Colors:** cream `#F4EEE4`, espresso `#1A1611`, antique gold `#C6A15B`, terracotta `#B4502E`. All via CSS variables in `base.css :root`.
-- **Type:** Cormorant Garamond (display serif) + Jost (UI/body), loaded from Google Fonts.
-- **Motion:** scroll-reveal (IntersectionObserver), animated stat count-ups, subtle parallax, magnetic buttons, animated nav underlines, sticky header that condenses on scroll, accordion. Respects `prefers-reduced-motion`.
+
+- **Colors:** cream `#F4EEE4`, espresso `#1A1611`, antique gold `#C6A15B`, terracotta `#B4502E` — CSS variables in `css/base.css :root`.
+- **Type:** Cormorant Garamond (display serif) + Jost (UI/body), Google Fonts.
+- **Motion:** scroll-reveal, count-ups, subtle parallax, magnetic buttons, condensing sticky header. Respects `prefers-reduced-motion`.
+
+## Bilingual (EN/AR)
+
+The header language switch toggles English/Arabic. Direction (`rtl`) is applied
+before first paint by the inline `lang-boot` script in each page head; the
+translation dictionary lives in `js/main.js` (plus `js/i18n-ar.js` on service
+pages). Arabic is reachable at `?lang=ar` on every page and declared to search
+engines via `hreflang` alternates. Full-headline Arabic for line-mask heroes is
+carried in `data-ar-lines` attributes.
+
+**Editing copy:** the Arabic dictionary matches English strings exactly. If you
+change English text in a page, update the matching key in `js/main.js` (or
+`js/i18n-ar.js` for service pages), or the Arabic for that string will silently
+fall back to English.
+
+## SEO
+
+Every page carries canonical, Open Graph/Twitter tags, and `hreflang`
+(en/ar/x-default). `index.html` and `contact.html` embed `ProfessionalService`
+JSON-LD. `sitemap.xml` lists all pages; update it when adding pages.
+
+## Accessibility
+
+Skip-to-content link on every page, visible `:focus-visible` styles, mobile nav
+with `aria-expanded`/Escape-to-close/scroll lock, reduced-motion fallbacks.
 
 ## Run locally
-Any static server works. From this folder:
+
 ```bash
 python -m http.server 8080
-# then open http://localhost:8080
+# open http://localhost:8080
 ```
-(Or just open `index.html` in a browser — note the Contact map iframe needs http(s), not file://.)
-
-## Adding the real images
-The site ships with elegant CSS placeholders (`.ph` blocks) so it looks finished immediately.
-To use real photography: open **IMAGE_PROMPTS.md**, generate each asset in ChatGPT, save into
-`assets/images/` with the given filename, then swap each placeholder `<div class="ph">` for the
-`<img>` shown in the adjacent HTML comment.
+(The Contact map iframe needs http(s), not file://.)
 
 ## Deploy
-- **Netlify:** drag this folder into app.netlify.com, or `netlify deploy --prod`. `netlify.toml` handles clean URLs, caching, and the 404.
-- **Vercel:** `vercel --prod` (uses `vercel.json`).
-- **GitHub Pages / Cloudflare Pages / any static host:** upload the folder as-is.
 
-## Notes
-- The Contact page embeds a live Google Map (no API key required).
-- Brand names in the client/partner sections are stylized text stand-ins, not official logos — replace with licensed logo SVGs before commercial launch.
-- Legal/footer links (Privacy, Terms, Sitemap) point to placeholders (`#`) and the sitemap; wire real pages before launch.
+- **Netlify:** drag the folder into app.netlify.com or `netlify deploy --prod`.
+- **Vercel:** `vercel --prod`.
+- **GitHub Pages / Cloudflare Pages:** upload as-is.
+
+## Before go-live checklist
+
+- Testimonial quotes are placeholders pending client-approved originals.
+- Confirm client/partner logo permissions with the client.
