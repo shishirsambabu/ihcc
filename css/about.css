@@ -1,0 +1,260 @@
+/* ==========================================================================
+   IMPACT-HCC — about.css (page-specific styles for about.html)
+   ========================================================================== */
+
+/* ---------- HERO (cream, 2 columns) ---------- */
+.about-hero {
+  background: var(--cream);
+  padding-top: clamp(9rem, 14vw, 12rem);
+  overflow: hidden;
+}
+.about-hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+}
+.about-hero__content .eyebrow { margin-bottom: 1.6rem; }
+.about-hero h1 { color: var(--ink); margin-bottom: 2.2rem; }
+.about-hero__body { max-width: 56ch; display: grid; gap: 1.25rem; }
+.about-hero__body p { color: var(--taupe); font-size: clamp(1rem, 1.2vw, 1.12rem); }
+.about-hero__body .accent-gold { font-style: italic; font-weight: 500; }
+
+.about-hero__art { position: relative; }
+.about-hero__panel {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 3 / 4.4;
+  box-shadow: 0 40px 80px -40px rgba(38, 33, 27, 0.35);
+}
+.about-hero__panel .ph--light,
+.about-hero__panel img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- TWO-COLUMN BLOCK (Our Clients / Our Team) ---------- */
+.about-cols__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+.about-col .gold-rule { margin-bottom: 1.6rem; }
+.about-col__head {
+  font-family: var(--font-display);
+  color: var(--gold-deep);
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  margin-bottom: 1.8rem;
+}
+.about-list { display: grid; gap: 1.25rem; }
+.about-list li {
+  position: relative;
+  padding-left: 2.1rem;
+  color: var(--taupe);
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  line-height: 1.6;
+}
+.about-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0; top: 0.05em;
+  color: var(--gold);
+  font-size: 1.05em;
+}
+
+/* ---------- DARK STATEMENT BAND ---------- */
+.about-band {
+  background: var(--espresso);
+  color: var(--paper-on-dark);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  text-align: center;
+}
+.about-band__line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  line-height: 1.35;
+  color: var(--ivory);
+  max-width: 26ch;
+  margin-inline: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .about-hero__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-hero__panel { aspect-ratio: 16 / 12; max-width: 520px; }
+  .about-cols__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .about-hero { padding-top: clamp(7.5rem, 22vw, 9rem); }
+  .about-hero__panel { aspect-ratio: 4 / 5; }
+  .about-band__line { font-size: clamp(1.35rem, 6vw, 1.9rem); }
+}
+
+/* ---------- Reference-fidelity overrides ---------- */
+.about-col__head { color: var(--rust); font-size: clamp(1.35rem, 1.9vw, 1.7rem); margin: 1rem 0 1.4rem; }
+.about-list li { border-bottom: 1px solid var(--line-light); padding: 0.9rem 0 0.9rem 1.7rem; position: relative; font-size: 0.92rem; color: var(--taupe); }
+.about-list li::before { content: "—"; position: absolute; left: 0; color: var(--gold-deep); }
+.about-list li:first-child { border-top: 1px solid var(--line-light); }
+
+/* ==========================================================================
+   Reference fidelity overrides
+   ========================================================================== */
+
+.about-hero {
+  min-height: calc(100vh - 0px);
+  padding-top: clamp(8.8rem, 9vw, 10.4rem);
+  padding-bottom: clamp(1.2rem, 2vw, 2.2rem);
+  background: var(--page-texture);
+}
+
+.about-hero__grid {
+  grid-template-columns: minmax(0, 0.98fr) minmax(28rem, 0.98fr);
+  gap: clamp(2.5rem, 4.6vw, 6.2rem);
+}
+
+.about-hero__content {
+  max-width: 64rem;
+}
+
+.about-hero__content .eyebrow::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 1px;
+  margin-top: 1.1rem;
+  background: var(--gold-deep);
+}
+
+.about-hero h1 {
+  font-size: clamp(4.8rem, 6.5vw, 8.2rem);
+  margin-bottom: clamp(0.85rem, 1.4vw, 1.5rem);
+}
+
+.about-hero h1::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 1px;
+  margin-top: 1rem;
+  background: var(--rust);
+}
+
+.about-hero__body {
+  max-width: 65ch;
+  gap: 0.8rem;
+}
+
+.about-hero__body p {
+  color: #2e3030;
+  font-size: clamp(0.9rem, 0.9vw, 1.02rem);
+  line-height: 1.58;
+}
+
+.about-hero__body .accent-gold {
+  color: var(--rust);
+  font-style: normal;
+}
+
+.about-hero__art {
+  align-self: stretch;
+  margin-right: calc(var(--gutter) * -0.72);
+}
+
+.about-hero__panel {
+  min-height: clamp(29rem, 44vw, 42rem);
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: #eee6da;
+}
+
+.about-hero__panel svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.about-inline-cols {
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: clamp(0.9rem, 1.6vw, 1.8rem);
+  max-width: 60rem;
+}
+
+.about-inline-cols .about-col + .about-col {
+  border-left: 1px solid rgba(169,134,63,0.45);
+  padding-left: clamp(2rem, 3.6vw, 3.7rem);
+}
+
+.about-inline-cols .about-col__head {
+  font-size: clamp(1.45rem, 1.8vw, 2.05rem);
+  margin: 0 0 1.1rem;
+  color: var(--rust);
+}
+
+.about-inline-cols .about-col__head::after {
+  content: "";
+  display: block;
+  width: 1.7rem;
+  height: 1px;
+  margin-top: 0.72rem;
+  background: var(--rust);
+}
+
+.about-inline-cols .about-list {
+  gap: 0.44rem;
+}
+
+.about-inline-cols .about-list li {
+  border: 0;
+  padding: 0 0 0 1.5rem;
+  color: #2f3131;
+  font-size: clamp(0.72rem, 0.74vw, 0.86rem);
+  line-height: 1.42;
+}
+
+.about-inline-cols .about-list li::before {
+  content: "";
+  top: 0.74em;
+  width: 0.8rem;
+  height: 1px;
+  background: var(--gold-deep);
+}
+
+.about-cols,
+.about-band {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .about-hero {
+    padding-top: 8.5rem;
+  }
+
+  .about-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero__art {
+    margin-right: 0;
+  }
+
+  .about-hero__panel {
+    min-height: 28rem;
+  }
+
+  .about-inline-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .about-inline-cols .about-col + .about-col {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
