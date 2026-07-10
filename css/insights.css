@@ -281,3 +281,18 @@ html[dir="rtl"] .insights-hero__lede {
 .article-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; border-top: 1px solid var(--line-light); padding-top: 2rem; }
 .article-cta p { font-family: var(--font-display); font-size: 1.35rem; }
 html[dir="rtl"] .article-pull { border-inline-start: 2px solid var(--gold); }
+
+
+/* Editorial drop cap on article openers. */
+.article-body .article-measure > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.3em;
+  font-weight: 500;
+  float: inline-start;
+  line-height: 0.78;
+  padding: 0.08em 0.14em 0 0;
+  color: var(--gold-deep);
+}
+html[dir="rtl"] .article-body .article-measure > p:first-of-type::first-letter {
+  padding: 0.08em 0 0 0.14em;
+}

@@ -533,31 +533,8 @@
     });
   }
 
-  /* ---------- Premium pointer aura + tilt cards ---------- */
+  /* ---------- Tilt cards ---------- */
   const finePointer = window.matchMedia('(pointer:fine)').matches;
-  if (!prefersReduced && finePointer) {
-    const aura = document.createElement('span');
-    aura.className = 'premium-aura';
-    aura.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(aura);
-
-    let auraTicking = false;
-    let auraX = 0;
-    let auraY = 0;
-    window.addEventListener('pointermove', (event) => {
-      auraX = event.clientX;
-      auraY = event.clientY;
-      if (!auraTicking) {
-        requestAnimationFrame(() => {
-          aura.style.setProperty('--aura-x', `${auraX}px`);
-          aura.style.setProperty('--aura-y', `${auraY}px`);
-          auraTicking = false;
-        });
-        auraTicking = true;
-      }
-    }, { passive: true });
-  }
-
   const initPremiumMotion = (root = document) => {
     if (prefersReduced || !finePointer) return;
     root.querySelectorAll('[data-tilt]').forEach((card) => {
@@ -601,6 +578,16 @@
       if (!open) item.classList.add('open');
     });
   });
+
+  /* ---------- Signature ghost words: Arabic on the English site, English on
+     the Arabic site — the bilingual identity as a typographic asset. ---------- */
+  const applyGhostWords = (lang) => {
+    document.querySelectorAll('.ghost-word[data-en][data-ar]').forEach((g) => {
+      g.textContent = lang === 'ar' ? g.dataset.en : g.dataset.ar;
+    });
+  };
+  applyGhostWords(currentLanguage);
+  window.addEventListener('impact:language-change', (e) => applyGhostWords(e.detail && e.detail.lang));
 
   /* ---------- Year injection ---------- */
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
