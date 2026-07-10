@@ -747,3 +747,19 @@ html[dir="rtl"] li {
     transform: none !important;
   }
 }
+
+
+/* Dual-script sign-off (index + contact footers). */
+.footer-ar {
+  font-family: 'Amiri', var(--font-display), serif;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(216,190,140,0.62);
+}
+body.is-arabic .footer-ar {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}

@@ -602,6 +602,16 @@
     });
   });
 
+  /* ---------- Dual-script elements: show Arabic on the English site and
+     English on the Arabic site (hero lockup, footer sign-off). ---------- */
+  const applyBilingual = (lang) => {
+    document.querySelectorAll('[data-bilingual][data-en][data-ar]').forEach((el) => {
+      el.textContent = lang === 'ar' ? el.dataset.en : el.dataset.ar;
+    });
+  };
+  applyBilingual(currentLanguage);
+  window.addEventListener('impact:language-change', (e) => applyBilingual(e.detail && e.detail.lang));
+
   /* ---------- Year injection ---------- */
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
