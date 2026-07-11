@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Direction concept — IMPACT HCC · Gulf Modernism</title>
+  <meta name="description" content="Design direction concept for IMPACT HCC — a bilingual Gulf-modernist system. Not linked from the live site." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Reem+Kufi:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bone: #EFE9DC;
+      --bone-2: #E6DECC;
+      --ink: #16130E;
+      --brass: #A9863F;
+      --oxide: #B4502E;
+      --palm: #1E3B32;
+      --hair: rgba(22, 19, 14, 0.25);
+      --hair-soft: rgba(22, 19, 14, 0.14);
+      --gro: "Space Grotesk", system-ui, sans-serif;
+      --kufi: "Reem Kufi", sans-serif;
+      --mono: "Space Mono", monospace;
+      --gut: clamp(1.2rem, 4vw, 4.5rem);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--gro);
+      background: var(--bone);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--oxide); color: var(--bone); }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .mono { font-family: var(--mono); }
+    .kufi { font-family: var(--kufi); }
+
+    /* sheet frame — the whole page sits inside a drawn border */
+    .sheet {
+      min-height: 100vh;
+      border: 1px solid var(--hair);
+      margin: clamp(8px, 1vw, 14px);
+      position: relative;
+      background: var(--bone);
+    }
+    .sheet::before, .sheet::after {
+      content: "";
+      position: fixed;
+      z-index: 50;
+      width: 14px; height: 14px;
+      border: 1px solid var(--brass);
+      pointer-events: none;
+    }
+    .sheet::before { top: 4px; left: 4px; border-right: 0; border-bottom: 0; }
+    .sheet::after { bottom: 4px; right: 4px; border-left: 0; border-top: 0; }
+
+    /* ---------- header ---------- */
+    header {
+      display: flex; align-items: stretch; justify-content: space-between;
+      border-bottom: 1px solid var(--hair);
+    }
+    .brand {
+      padding: 1.1rem var(--gut);
+      border-right: 1px solid var(--hair-soft);
+      display: flex; align-items: baseline; gap: 0.8rem;
+    }
+    .brand b { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.04em; }
+    .brand span { font-family: var(--kufi); color: var(--brass); font-size: 0.95rem; }
+    nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.4rem); padding-inline: var(--gut); }
+    nav a {
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.75;
+    }
+    nav a:hover { opacity: 1; color: var(--oxide); }
+    .lang {
+      font-family: var(--mono); font-size: 0.68rem;
+      border: 1px solid var(--hair); padding: 0.45rem 0.9rem;
+      display: flex; gap: 0.6rem; align-items: center;
+    }
+    .lang .kufi { font-size: 0.85rem; color: var(--oxide); }
+
+    /* ---------- hero ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+      border-bottom: 1px solid var(--hair);
+      min-height: 78vh;
+    }
+    .hero-copy {
+      padding: clamp(2.4rem, 5vw, 5rem) var(--gut) clamp(2rem, 4vw, 3.4rem);
+      display: flex; flex-direction: column; justify-content: space-between;
+      border-right: 1px solid var(--hair-soft);
+    }
+    .dim {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--brass);
+      display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.6rem;
+    }
+    .dim::before, .dim::after { content: ""; height: 1px; background: var(--brass); flex: 0 0 34px; }
+    .dim::after { flex: 1; opacity: 0.35; }
+    h1 {
+      font-size: clamp(2.6rem, 6.2vw, 5.6rem);
+      font-weight: 700;
+      line-height: 0.98;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+      max-width: 12ch;
+    }
+    h1 em { font-style: normal; color: var(--oxide); }
+    .h1-ar {
+      font-family: var(--kufi);
+      font-size: clamp(1.7rem, 3.9vw, 3.4rem);
+      font-weight: 500;
+      color: var(--oxide);
+      margin-top: clamp(1rem, 2vw, 1.8rem);
+      line-height: 1.55;
+    }
+    .hero-low {
+      margin-top: clamp(2rem, 4vw, 3rem);
+      display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.6rem 3rem;
+    }
+    .hero-low p { max-width: 34ch; font-size: 0.95rem; opacity: 0.8; }
+    .btn {
+      display: inline-block;
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 1rem 1.7rem;
+      background: var(--ink); color: var(--bone);
+      border: 1px solid var(--ink);
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn:hover { background: var(--oxide); border-color: var(--oxide); }
+    .btn--line { background: transparent; color: var(--ink); }
+    .btn--line:hover { background: var(--ink); color: var(--bone); }
+    .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+    .hero-art {
+      position: relative;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      overflow: hidden;
+    }
+    .hero-art svg { width: 100%; height: auto; }
+    .coords {
+      border-top: 1px solid var(--hair-soft);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .coords div {
+      padding: 0.9rem 1.4rem;
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.8;
+    }
+    .coords div + div { border-left: 1px solid var(--hair-soft); }
+    .coords b { display: block; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--oxide); margin-bottom: 2px; }
+
+    /* ---------- strip ---------- */
+    .strip {
+      background: var(--ink); color: var(--bone);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 2rem; padding: 0.85rem var(--gut);
+      overflow: hidden; white-space: nowrap;
+      border-bottom: 1px solid var(--hair);
+    }
+    .strip span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .strip .kufi { font-family: var(--kufi); font-size: 0.85rem; letter-spacing: 0; color: var(--brass); }
+    .strip i { color: var(--oxide); font-style: normal; }
+
+    /* ---------- five dimensions ---------- */
+    .dimensions {
+      background: var(--palm); color: var(--bone);
+      padding: clamp(3rem, 6vw, 5.5rem) var(--gut);
+      border-bottom: 1px solid var(--hair);
+    }
+    .sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: clamp(2.2rem, 4vw, 3.6rem); }
+    .sec-head h2 { font-size: clamp(1.7rem, 3.4vw, 3rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; }
+    .sec-head .kufi { font-size: clamp(1.15rem, 2.2vw, 1.9rem); color: var(--brass); font-weight: 500; }
+    .sec-no { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em; color: var(--brass); display: block; margin-bottom: 0.8rem; }
+    .arches {
+      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+      border-left: 1px solid rgba(239, 233, 220, 0.25);
+    }
+    .arch {
+      border-right: 1px solid rgba(239, 233, 220, 0.25);
+      padding: clamp(1rem, 2vw, 1.8rem);
+    }
+    .arch svg { width: 100%; height: auto; margin-bottom: 1.2rem; }
+    .arch .no { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; color: var(--brass); display: flex; justify-content: space-between; margin-bottom: 0.55rem; }
+    .arch h3 { font-size: clamp(0.85rem, 1.2vw, 1.05rem); text-transform: uppercase; letter-spacing: 0.06em; }
+    .arch .kufi { font-size: 0.95rem; color: var(--brass); margin-top: 0.15rem; font-weight: 400; }
+    .arch p { font-size: 0.74rem; opacity: 0.65; margin-top: 0.7rem; line-height: 1.6; }
+    .dimensions .caption {
+      margin-top: clamp(1.6rem, 3vw, 2.4rem);
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--brass); display: flex; align-items: center; gap: 1rem;
+    }
+    .dimensions .caption::after { content: ""; flex: 1; height: 1px; background: rgba(169, 134, 63, 0.4); }
+
+    /* ---------- services index ---------- */
+    .services { padding: clamp(3rem, 6vw, 5.5rem) 0 0; border-bottom: 1px solid var(--hair); }
+    .services .sec-head { padding-inline: var(--gut); }
+    .svc-rows { border-top: 1px solid var(--hair); }
+    .row {
+      display: grid;
+      grid-template-columns: 7rem minmax(0, 1.35fr) minmax(0, 1fr) auto;
+      align-items: baseline; gap: 1.4rem;
+      padding: 1.35rem var(--gut);
+      border-bottom: 1px solid var(--hair-soft);
+      transition: background 0.25s;
+    }
+    .row:hover { background: var(--bone-2); }
+    .row .no { font-family: var(--mono); font-size: 0.72rem; color: var(--oxide); display: flex; gap: 0.7rem; }
+    .row .no .kufi { color: var(--brass); font-size: 0.85rem; }
+    .row h3 { font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; transition: color 0.25s; }
+    .row:hover h3 { color: var(--oxide); }
+    .row .kufi-name { font-family: var(--kufi); font-size: clamp(0.95rem, 1.4vw, 1.2rem); color: var(--brass); text-align: left; }
+    .row .arw { font-family: var(--mono); opacity: 0.4; transition: opacity 0.25s, transform 0.25s; }
+    .row:hover .arw { opacity: 1; color: var(--oxide); transform: translateX(4px); }
+    .annex {
+      padding: 1.4rem var(--gut);
+      font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    /* ---------- stats ---------- */
+    .stats {
+      background: var(--ink); color: var(--bone);
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-bottom: 1px solid var(--hair);
+    }
+    .stat {
+      padding: clamp(2rem, 4vw, 3.4rem) clamp(1.2rem, 2.4vw, 2.4rem);
+      border-right: 1px solid rgba(239, 233, 220, 0.16);
+    }
+    .stat:last-child { border-right: 0; }
+    .stat b {
+      font-size: clamp(2.6rem, 5.2vw, 4.6rem); font-weight: 700; line-height: 1;
+      display: block; letter-spacing: -0.02em;
+    }
+    .stat b i { font-style: normal; color: var(--oxide); }
+    .ruler {
+      height: 9px; margin: 0.9rem 0 0.8rem; position: relative;
+      background: repeating-linear-gradient(90deg, rgba(239,233,220,0.4) 0 1px, transparent 1px 8px);
+      max-width: 82px;
+    }
+    .ruler::after { content: ""; position: absolute; left: 40px; top: -3px; width: 1px; height: 15px; background: var(--brass); }
+    .stat span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; display: block; }
+    .stat .kufi { font-family: var(--kufi); font-size: 0.82rem; color: var(--brass); opacity: 1; letter-spacing: 0; margin-top: 0.2rem; }
+
+    /* ---------- clients ---------- */
+    .clients { padding: clamp(3rem, 5vw, 4.5rem) var(--gut); border-bottom: 1px solid var(--hair); }
+    .clients .lbl {
+      text-align: center; font-family: var(--mono); font-size: 0.62rem;
+      letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.65;
+      margin-bottom: 2rem;
+    }
+    .plate {
+      display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+      border: 1px solid var(--hair);
+    }
+    .plate img {
+      width: 100%; height: clamp(5rem, 6.4vw, 7rem);
+      object-fit: contain;
+      padding: clamp(1.1rem, 1.6vw, 1.7rem);
+      border-right: 1px solid var(--hair-soft);
+      opacity: 0.85; mix-blend-mode: multiply;
+      transition: opacity 0.3s;
+    }
+    .plate img:last-child { border-right: 0; }
+    .plate img:hover { opacity: 1; }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      background: var(--oxide); color: var(--bone);
+      padding: clamp(3.4rem, 7vw, 6rem) var(--gut);
+      border-bottom: 1px solid var(--hair);
+    }
+    .cta h2 { font-size: clamp(2rem, 4.6vw, 4.2rem); font-weight: 700; text-transform: uppercase; line-height: 1; letter-spacing: -0.015em; max-width: 16ch; }
+    .cta .kufi { font-size: clamp(1.3rem, 2.6vw, 2.3rem); margin: 1.2rem 0 2.2rem; font-weight: 500; color: rgba(239, 233, 220, 0.85); }
+    .cta .btn { background: var(--bone); color: var(--ink); border-color: var(--bone); }
+    .cta .btn:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+
+    /* ---------- footer ---------- */
+    footer {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 1rem 2rem; padding: 1.3rem var(--gut);
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    footer .kufi { font-family: var(--kufi); font-size: 0.85rem; letter-spacing: 0; text-transform: none; color: var(--brass); }
+    footer .note { color: var(--oxide); }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 980px) {
+      body { overflow-x: hidden; }
+      nav { display: none; }
+      .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+      .coords div { padding: 0.75rem 0.9rem; font-size: 0.53rem; letter-spacing: 0.06em; }
+      .strip { gap: 1.1rem; justify-content: flex-start; }
+      .sec-head h2 { font-size: clamp(1.35rem, 5.6vw, 3rem); }
+      h1 { font-size: clamp(2.3rem, 9.6vw, 5.6rem); }
+      .hero-copy { border-right: 0; }
+      .hero-art { border-top: 1px solid var(--hair-soft); }
+      .arches { grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(239,233,220,0.25); }
+      .arch { border-bottom: 1px solid rgba(239,233,220,0.25); }
+      .row { grid-template-columns: 4.6rem minmax(0, 1fr) auto; }
+      .row .kufi-name { grid-column: 2; grid-row: 2; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2n) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid rgba(239,233,220,0.16); }
+      .plate { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .plate img:nth-child(3n) { border-right: 0; }
+      .plate img:nth-child(-n+3) { border-bottom: 1px solid var(--hair-soft); }
+    }
+    @media (max-width: 560px) {
+      .arches { grid-template-columns: 1fr; }
+      .plate { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .plate img:nth-child(3n) { border-right: 1px solid var(--hair-soft); }
+      .plate img:nth-child(2n) { border-right: 0; }
+      .plate img:nth-child(-n+4) { border-bottom: 1px solid var(--hair-soft); }
+    }
+  </style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div class="brand">
+      <b>IMPACT HCC<sup style="color:var(--oxide)">®</sup></b>
+      <span>رأس المال البشري</span>
+    </div>
+    <nav>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Insights</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="lang" style="margin-inline-end: var(--gut); align-self: center;">
+      <b>EN</b><span style="opacity:.35">/</span><span class="kufi">ع</span>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <div>
+        <p class="dim">Human capital consultancy — est. Dubai</p>
+        <h1>The architecture of <em>human performance.</em></h1>
+        <p class="h1-ar">هندسة الأداء البشري</p>
+      </div>
+      <div class="hero-low">
+        <p>We design the structures, leadership, capability, culture, and performance systems behind organizations that endure.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#">Explore services</a>
+          <a class="btn btn--line" href="#">Start a conversation</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 480 500" aria-hidden="true">
+        <!-- arch composition: structure sheltering a person -->
+        <line x1="0" y1="452" x2="480" y2="452" stroke="#16130E" stroke-width="1.5"/>
+        <path d="M70,452 V240 A170,170 0 0 1 410,240 V452 Z" fill="#B4502E"/>
+        <path d="M110,452 V250 A130,130 0 0 1 370,250 V452 Z" fill="#EFE9DC"/>
+        <path d="M148,452 V262 A92,92 0 0 1 332,262 V452 Z" fill="none" stroke="#A9863F" stroke-width="1.5"/>
+        <circle cx="240" cy="380" r="17" fill="#16130E"/>
+        <rect x="232" y="395" width="16" height="57" fill="#16130E"/>
+        <!-- measurement ticks -->
+        <g stroke="#16130E" opacity="0.5">
+          <line x1="70" y1="468" x2="70" y2="478"/>
+          <line x1="240" y1="468" x2="240" y2="478"/>
+          <line x1="410" y1="468" x2="410" y2="478"/>
+          <line x1="70" y1="473" x2="410" y2="473" stroke-width="0.75"/>
+        </g>
+        <text x="240" y="493" text-anchor="middle" font-family="Space Mono" font-size="10" letter-spacing="3" fill="#16130E" opacity="0.6">SPAN — FIVE DIMENSIONS</text>
+        <!-- sun disc -->
+        <circle cx="412" cy="84" r="34" fill="none" stroke="#A9863F" stroke-width="1.5"/>
+        <circle cx="412" cy="84" r="12" fill="#A9863F"/>
+      </svg>
+      <div class="coords">
+        <div><b>Dubai — HQ</b>25.2048° N · 55.2708° E</div>
+        <div><b>Barcelona — Campus</b>41.3874° N · 2.1686° E</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STRIP ============ -->
+  <div class="strip" aria-hidden="true">
+    <span>Consultancy</span><span class="kufi">التدريب والتطوير</span><i>◆</i>
+    <span>Assessment</span><span class="kufi">خدمات التوظيف</span><i>◆</i>
+    <span>Conscious business</span><span class="kufi">برامج الرفاه المؤسسي</span><i>◆</i>
+    <span>Global assignments</span>
+  </div>
+
+  <!-- ============ FIVE DIMENSIONS ============ -->
+  <section class="dimensions">
+    <div class="sec-head">
+      <div>
+        <span class="sec-no">02 / ٠٢ — THE THINKING MODEL</span>
+        <h2>Five dimensions. One system.</h2>
+      </div>
+      <span class="kufi">خمسة أبعاد. نظام واحد.</span>
+    </div>
+    <div class="arches">
+      <div class="arch">
+        <svg viewBox="0 0 120 74" aria-hidden="true"><path d="M12,74 V44 A48,48 0 0 1 108,44 V74" fill="none" stroke="#EFE9DC" stroke-width="2"/><line x1="0" y1="73" x2="120" y2="73" stroke="#EFE9DC" stroke-width="1" opacity="0.4"/></svg>
+        <div class="no"><span>01</span><span class="kufi">٠١</span></div>
+        <h3>Structure</h3>
+        <p class="kufi">الهيكل</p>
+        <p>Design that clarifies roles, decisions, and governance.</p>
+      </div>
+      <div class="arch">
+        <svg viewBox="0 0 120 74" aria-hidden="true"><path d="M12,74 V44 A48,48 0 0 1 108,44 V74" fill="none" stroke="#EFE9DC" stroke-width="2"/><line x1="0" y1="73" x2="120" y2="73" stroke="#EFE9DC" stroke-width="1" opacity="0.4"/></svg>
+        <div class="no"><span>02</span><span class="kufi">٠٢</span></div>
+        <h3>Leadership</h3>
+        <p class="kufi">القيادة</p>
+        <p>Leaders who inspire, align, and mobilize people.</p>
+      </div>
+      <div class="arch">
+        <svg viewBox="0 0 120 74" aria-hidden="true"><path d="M12,74 V44 A48,48 0 0 1 108,44 V74" fill="none" stroke="#EFE9DC" stroke-width="2"/><line x1="0" y1="73" x2="120" y2="73" stroke="#EFE9DC" stroke-width="1" opacity="0.4"/></svg>
+        <div class="no"><span>03</span><span class="kufi">٠٣</span></div>
+        <h3>Capability</h3>
+        <p class="kufi">القدرات</p>
+        <p>Skills and mindsets that drive execution.</p>
+      </div>
+      <div class="arch">
+        <svg viewBox="0 0 120 74" aria-hidden="true"><path d="M12,74 V44 A48,48 0 0 1 108,44 V74" fill="none" stroke="#EFE9DC" stroke-width="2"/><line x1="0" y1="73" x2="120" y2="73" stroke="#EFE9DC" stroke-width="1" opacity="0.4"/></svg>
+        <div class="no"><span>04</span><span class="kufi">٠٤</span></div>
+        <h3>Culture</h3>
+        <p class="kufi">الثقافة</p>
+        <p>A culture that fuels engagement and accountability.</p>
+      </div>
+      <div class="arch">
+        <svg viewBox="0 0 120 74" aria-hidden="true"><path d="M12,74 V44 A48,48 0 0 1 108,44 V74" fill="#B4502E" stroke="#B4502E" stroke-width="2"/><line x1="0" y1="73" x2="120" y2="73" stroke="#EFE9DC" stroke-width="1" opacity="0.4"/></svg>
+        <div class="no"><span>05</span><span class="kufi">٠٥</span></div>
+        <h3>Performance</h3>
+        <p class="kufi">الأداء</p>
+        <p>Measurable outcomes that create lasting value.</p>
+      </div>
+    </div>
+    <p class="caption">One system — multiplying results · نظام واحد، نتائج متضاعفة</p>
+  </section>
+
+  <!-- ============ SERVICES INDEX ============ -->
+  <section class="services">
+    <div class="sec-head">
+      <div>
+        <span class="sec-no">03 / ٠٣ — ADVISORY INDEX</span>
+        <h2>What we build.</h2>
+      </div>
+      <span class="kufi" style="color: var(--brass)">ما الذي نبنيه.</span>
+    </div>
+    <div class="svc-rows">
+      <a class="row" href="#">
+        <span class="no">01 <span class="kufi">٠١</span></span>
+        <h3>Consultancy</h3>
+        <span class="kufi-name">الخدمات الاستشارية</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">02 <span class="kufi">٠٢</span></span>
+        <h3>Training &amp; Development</h3>
+        <span class="kufi-name">التدريب والتطوير</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">03 <span class="kufi">٠٣</span></span>
+        <h3>Assessment</h3>
+        <span class="kufi-name">خدمات التقييم</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">04 <span class="kufi">٠٤</span></span>
+        <h3>Recruitment</h3>
+        <span class="kufi-name">خدمات التوظيف</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">05 <span class="kufi">٠٥</span></span>
+        <h3>Conscious Business</h3>
+        <span class="kufi-name">خدمات الأعمال الواعية</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">06 <span class="kufi">٠٦</span></span>
+        <h3>Global Assignments</h3>
+        <span class="kufi-name">خدمات الإسناد العالمي</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">07 <span class="kufi">٠٧</span></span>
+        <h3>Corporate Wellbeing</h3>
+        <span class="kufi-name">برامج الرفاه المؤسسي</span>
+        <span class="arw">→</span>
+      </a>
+      <a class="row" href="#">
+        <span class="no">08 <span class="kufi">٠٨</span></span>
+        <h3>Public Speaking</h3>
+        <span class="kufi-name">خدمات التحدث العام</span>
+        <span class="arw">→</span>
+      </a>
+    </div>
+    <p class="annex">Annex — Compliance programs · CSR &amp; wellbeing events · Software consultancy</p>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
+    <div class="stat">
+      <b>50<i>+</i></b>
+      <div class="ruler"></div>
+      <span>Organizations served</span>
+      <span class="kufi">منظمات نخدمها</span>
+    </div>
+    <div class="stat">
+      <b>12<i>+</i></b>
+      <div class="ruler"></div>
+      <span>Industry sectors</span>
+      <span class="kufi">قطاعات صناعية</span>
+    </div>
+    <div class="stat">
+      <b>11</b>
+      <div class="ruler"></div>
+      <span>Advisory service lines</span>
+      <span class="kufi">خدمات استشارية</span>
+    </div>
+    <div class="stat">
+      <b>2</b>
+      <div class="ruler"></div>
+      <span>Hubs — Dubai &amp; Barcelona</span>
+      <span class="kufi">دبي وبرشلونة</span>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS ============ -->
+  <section class="clients">
+    <p class="lbl">Trusted by forward-thinking leaders · بثقة قادة يستشرفون المستقبل</p>
+    <div class="plate">
+      <img src="assets/images/home-logos-clean/nestle.png" alt="Nestle" />
+      <img src="assets/images/home-logos-clean/standard-chartered.png" alt="Standard Chartered" />
+      <img src="assets/images/home-logos-clean/schneider-electric.png" alt="Schneider Electric" />
+      <img src="assets/images/home-logos-clean/dbs.png" alt="DBS" />
+      <img src="assets/images/home-logos-clean/johnson-johnson.png" alt="Johnson &amp; Johnson" />
+      <img src="assets/images/home-logos-clean/roche.png" alt="Roche" />
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta">
+    <span class="sec-no" style="color: rgba(239,233,220,0.7)">04 / ٠٤ — NEXT</span>
+    <h2>Let's build the system behind performance.</h2>
+    <p class="kufi">لنبنِ النظام وراء الأداء.</p>
+    <a class="btn" href="#">office@impact-hcc.com</a>
+  </section>
+
+  <footer>
+    <span>© 2026 IMPACT HCC — Human Capital Consultancy</span>
+    <span class="kufi">إنسانية تنفيذية. أثر قابل للقياس.</span>
+    <span class="note">Direction concept — not linked from the live site</span>
+  </footer>
+
+</div>
+</body>
+</html>
