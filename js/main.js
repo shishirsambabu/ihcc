@@ -441,6 +441,43 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Editorial page progress + active section ---------- */
+  const progressLinks = Array.from(document.querySelectorAll('[data-progress-link]'));
+  const progressSections = progressLinks
+    .map(link => document.getElementById(link.dataset.progressLink))
+    .filter(Boolean);
+
+  if (progressLinks.length && progressSections.length) {
+    let progressTicking = false;
+    const updatePageProgress = () => {
+      const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+      document.documentElement.style.setProperty('--page-progress', progress.toFixed(4));
+
+      const marker = window.scrollY + window.innerHeight * 0.42;
+      let activeId = progressSections[0].id;
+      progressSections.forEach(section => {
+        if (section.offsetTop <= marker) activeId = section.id;
+      });
+      progressLinks.forEach(link => {
+        const active = link.dataset.progressLink === activeId;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      progressTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!progressTicking) {
+        requestAnimationFrame(updatePageProgress);
+        progressTicking = true;
+      }
+    }, { passive: true });
+    window.addEventListener('resize', updatePageProgress, { passive: true });
+    updatePageProgress();
+  }
+
   /* ---------- Mobile nav (aria-synced, Escape to close, scroll-locked) ---------- */
   const toggle = document.querySelector('.nav-toggle');
   if (toggle) {
@@ -468,7 +505,7 @@
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
     revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('in'));
@@ -581,6 +618,22 @@
   window.impactInitPremiumMotion = initPremiumMotion;
   initPremiumMotion();
 
+  /* ---------- Cinematic hero drift ---------- */
+  const cinematicHero = document.querySelector('.home-page .hero');
+  if (cinematicHero && !prefersReduced && finePointer) {
+    cinematicHero.addEventListener('pointermove', (event) => {
+      const rect = cinematicHero.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 8;
+      cinematicHero.style.setProperty('--hero-shift-x', `${x.toFixed(2)}px`);
+      cinematicHero.style.setProperty('--hero-shift-y', `${y.toFixed(2)}px`);
+    });
+    cinematicHero.addEventListener('pointerleave', () => {
+      cinematicHero.style.setProperty('--hero-shift-x', '0px');
+      cinematicHero.style.setProperty('--hero-shift-y', '0px');
+    });
+  }
+
   /* ---------- Smooth anchor scroll ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
@@ -625,7 +678,7 @@
   const forceReveal = () => {
     document.querySelectorAll('[data-reveal], [data-reveal-stagger], .reveal-lines').forEach(el => el.classList.add('in'));
   };
-  window.addEventListener('load', () => { setTimeout(forceReveal, 2600); });
+  window.addEventListener('load', () => { setTimeout(forceReveal, 1500); });
   // Also reveal immediately if the page is loaded into a non-painting/hidden tab.
   if (document.visibilityState === 'hidden') forceReveal();
 })();
