@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>IMPACT HCC — Website Development · Investment Proposal</title>
+<style>
+/*__FONTS__*/
+
+:root{
+  --cream:#F4EEE4;
+  --cream-2:#EDE4D5;
+  --paper:#FBF8F2;
+  --espresso:#1A1611;
+  --espresso-2:#2A241C;
+  --ink:#332C22;
+  --gold:#C6A15B;
+  --gold-deep:#A9863F;
+  --terra:#B4502E;
+  --line:rgba(26,22,17,.14);
+  --line-soft:rgba(26,22,17,.08);
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+@page{ size:A4; margin:0; }
+
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--cream);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---------- page frame ---------- */
+.page{
+  position:relative;
+  width:210mm;
+  height:297mm;
+  overflow:hidden;
+  page-break-after:always;
+  background:var(--cream);
+}
+.page:last-child{ page-break-after:auto; }
+.pad{ position:absolute; inset:0; padding:19mm 18mm 16mm; display:flex; flex-direction:column; }
+
+/* ---------- typographic atoms ---------- */
+.eyebrow{
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:9.5pt;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.eyebrow.on-dark{ color:var(--gold); }
+h1,h2,h3{ font-family:var(--serif); font-weight:500; line-height:1.06; color:var(--espresso); }
+p{ font-size:10.5pt; line-height:1.62; color:#4a4133; font-weight:300; }
+strong{ font-weight:500; color:var(--espresso); }
+em{ font-style:italic; }
+
+.rule{ height:1px; background:var(--line); border:0; }
+.rule-gold{ height:2px; width:52px; background:var(--gold); border:0; }
+
+/* ---------- running footer ---------- */
+.foot{
+  margin-top:auto;
+  display:flex; align-items:center; justify-content:space-between;
+  font-family:var(--sans); font-weight:400;
+  font-size:7.4pt; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(26,22,17,.45);
+  padding-top:6mm;
+  border-top:1px solid var(--line-soft);
+}
+.foot .dot{ color:var(--gold-deep); }
+
+/* ============================================================
+   COVER
+   ============================================================ */
+.cover{ background:var(--espresso); color:var(--cream); }
+.cover .pad{ padding:20mm 18mm 15mm; }
+.cover-bg-word{
+  position:absolute; right:-6mm; top:104mm;
+  font-family:var(--serif); font-weight:600;
+  font-size:150pt; line-height:1; color:rgba(198,161,91,.07);
+  letter-spacing:-.02em; user-select:none;
+}
+.cover-ar{
+  position:absolute; left:14mm; bottom:70mm;
+  font-family:var(--serif); font-size:34pt; color:rgba(244,238,228,.10);
+  letter-spacing:.04em;
+}
+.cover-top{ display:flex; align-items:flex-start; justify-content:space-between; }
+.brand-lock .name{
+  font-family:var(--sans); font-weight:500; font-size:15pt;
+  letter-spacing:.42em; color:var(--cream); text-transform:uppercase;
+}
+.brand-lock .name b{ color:var(--gold); font-weight:600; }
+.brand-lock .sub{
+  font-family:var(--sans); font-weight:300; font-size:7.6pt;
+  letter-spacing:.30em; text-transform:uppercase; color:rgba(244,238,228,.55);
+  margin-top:5px;
+}
+.cover-locale{
+  text-align:right; font-family:var(--sans); font-weight:300;
+  font-size:8pt; letter-spacing:.24em; text-transform:uppercase;
+  color:rgba(244,238,228,.55); line-height:2;
+}
+.cover-mid{ margin-top:auto; margin-bottom:auto; position:relative; z-index:2; }
+.cover-mid .eyebrow{ margin-bottom:10mm; }
+.cover-title{
+  font-size:56pt; line-height:.98; color:var(--cream); font-weight:500;
+  letter-spacing:-.01em;
+}
+.cover-title .gold{ color:var(--gold); font-style:italic; font-weight:500; }
+.cover-sub{
+  margin-top:9mm; max-width:118mm;
+  font-family:var(--sans); font-weight:300; font-size:11pt; line-height:1.7;
+  color:rgba(244,238,228,.78);
+}
+.cover-meta{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:8mm;
+  padding-top:8mm; border-top:1px solid rgba(198,161,91,.32);
+}
+.cover-meta .k{
+  font-family:var(--sans); font-weight:500; font-size:7.6pt;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:7px;
+}
+.cover-meta .v{
+  font-family:var(--serif); font-size:14pt; color:var(--cream); font-weight:500; line-height:1.25;
+}
+.cover-meta .v small{ display:block; font-family:var(--sans); font-weight:300; font-size:8.5pt; color:rgba(244,238,228,.6); letter-spacing:.02em; margin-top:3px; }
+
+/* ============================================================
+   SHARED CONTENT HEADER
+   ============================================================ */
+.sec-head{ margin-bottom:7.5mm; }
+.sec-head .eyebrow{ display:block; margin-bottom:6mm; }
+.sec-head h2{ font-size:31pt; letter-spacing:-.005em; }
+.sec-head h2 .it{ font-style:italic; color:var(--gold-deep); }
+.sec-head .lead{ margin-top:5mm; max-width:150mm; font-size:11pt; color:#4a4133; }
+
+/* ---------- page 2: at a glance ---------- */
+.stats{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  margin:2mm 0 9mm;
+}
+.stat{ padding:7mm 4mm 7mm 0; border-right:1px solid var(--line-soft); }
+.stat:last-child{ border-right:0; }
+.stat .num{ font-family:var(--serif); font-weight:600; font-size:33pt; color:var(--espresso); line-height:1; }
+.stat .num .u{ font-size:15pt; color:var(--gold-deep); }
+.stat .lab{ margin-top:5px; font-family:var(--sans); font-weight:400; font-size:8pt; letter-spacing:.11em; text-transform:uppercase; color:#6b6151; line-height:1.4; }
+
+.twocol{ display:grid; grid-template-columns:1fr 1fr; gap:11mm; margin-top:1mm; }
+.twocol h3{ font-size:16pt; margin-bottom:4mm; }
+.twocol h3 .n{ color:var(--gold-deep); font-size:11pt; font-family:var(--sans); font-weight:500; margin-right:8px; letter-spacing:.05em; }
+.twocol p{ font-size:10pt; }
+.chiprow{ margin-top:4mm; display:flex; flex-wrap:wrap; gap:5px; }
+.chip{ font-family:var(--sans); font-weight:400; font-size:7.6pt; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); border:1px solid var(--line); border-radius:20px; padding:4px 11px; background:var(--paper); }
+
+.callout{
+  margin-top:auto;
+  background:var(--espresso); color:var(--cream);
+  padding:8mm 9mm; border-radius:2px; position:relative;
+}
+.callout::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
+.callout .eyebrow{ color:var(--gold); margin-bottom:4mm; display:block; }
+.callout p{ color:rgba(244,238,228,.86); font-size:11.5pt; line-height:1.62; font-family:var(--serif); font-style:italic; font-weight:400; }
+
+/* ============================================================
+   PAGE 3 — INVESTMENT TABLE
+   ============================================================ */
+.tbl{ width:100%; border-collapse:collapse; margin-top:1mm; }
+.tbl thead th{
+  font-family:var(--sans); font-weight:500; font-size:7.8pt;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep);
+  text-align:left; padding:0 0 4mm; border-bottom:1.5px solid var(--espresso);
+}
+.tbl thead th.num{ text-align:right; }
+.tbl tbody td{
+  padding:3.3mm 0; border-bottom:1px solid var(--line-soft);
+  vertical-align:top;
+}
+.tbl .idx{ font-family:var(--serif); font-weight:600; font-size:13pt; color:var(--gold-deep); width:12mm; padding-top:3.7mm; }
+.tbl .item .t{ font-family:var(--serif); font-size:13.5pt; font-weight:500; color:var(--espresso); line-height:1.15; }
+.tbl .item .d{ font-family:var(--sans); font-weight:300; font-size:8.7pt; color:#6b6151; line-height:1.42; margin-top:3px; max-width:108mm; }
+.tbl td.usd{ text-align:right; font-family:var(--serif); font-weight:600; font-size:14pt; color:var(--espresso); white-space:nowrap; width:26mm; padding-top:3.6mm; }
+.tbl td.aed{ text-align:right; font-family:var(--sans); font-weight:300; font-size:8.6pt; color:#8a7f6c; white-space:nowrap; width:22mm; padding-top:5mm; }
+.tbl tfoot td{ padding-top:5mm; }
+.tot-label{ font-family:var(--serif); font-style:italic; font-size:15pt; color:var(--espresso); }
+.tot-usd{ text-align:right; font-family:var(--serif); font-weight:600; font-size:23pt; color:var(--espresso); }
+.tot-aed{ text-align:right; font-family:var(--sans); font-weight:400; font-size:9pt; color:var(--gold-deep); letter-spacing:.04em; }
+.fx-note{ font-family:var(--sans); font-weight:300; font-size:7.6pt; color:#8a7f6c; margin-top:4mm; letter-spacing:.03em; }
+
+/* ============================================================
+   PAGE 4 — WHY
+   ============================================================ */
+.why{ display:flex; flex-direction:column; gap:5.5mm; margin-top:1mm; }
+.why-item{ display:grid; grid-template-columns:14mm 1fr; gap:2mm; align-items:start; padding-bottom:5.5mm; border-bottom:1px solid var(--line-soft); }
+.why-item:last-child{ border-bottom:0; }
+.why-item .wn{ font-family:var(--serif); font-weight:600; font-size:20pt; color:var(--gold); line-height:.9; }
+.why-item h3{ font-size:15pt; margin-bottom:2.5mm; }
+.why-item p{ font-size:9.7pt; line-height:1.55; }
+
+.compare{
+  margin-top:auto; display:grid; grid-template-columns:1fr 1fr; gap:0;
+  border:1px solid var(--line); border-radius:2px; overflow:hidden;
+}
+.compare .col{ padding:7mm 8mm; }
+.compare .col.a{ background:var(--paper); border-right:1px solid var(--line); }
+.compare .col.b{ background:var(--espresso); color:var(--cream); }
+.compare .lab{ font-family:var(--sans); font-weight:500; font-size:7.6pt; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:4mm; }
+.compare .col.b .lab{ color:var(--gold); }
+.compare .big{ font-family:var(--serif); font-weight:600; font-size:24pt; color:var(--espresso); line-height:1.05; }
+.compare .col.b .big{ color:var(--cream); }
+.compare .sm{ font-family:var(--sans); font-weight:300; font-size:8.6pt; color:#6b6151; margin-top:3mm; line-height:1.5; }
+.compare .col.b .sm{ color:rgba(244,238,228,.7); }
+
+/* ============================================================
+   PAGE 5 — INCLUDED / TERMS
+   ============================================================ */
+.inc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3mm 10mm; margin-top:1mm; }
+.inc{ display:flex; gap:7px; align-items:baseline; padding:3mm 0; border-bottom:1px solid var(--line-soft); }
+.inc .tick{ color:var(--gold-deep); font-family:var(--serif); font-weight:600; font-size:12pt; line-height:1; }
+.inc .txt{ font-family:var(--sans); font-weight:300; font-size:9.4pt; color:var(--ink); line-height:1.4; }
+.inc .txt b{ font-weight:500; color:var(--espresso); }
+
+.lower{ display:grid; grid-template-columns:1.05fr 1fr; gap:9mm; margin-top:8mm; }
+.block h3{ font-size:15pt; margin-bottom:4mm; }
+.terms-row{ display:flex; justify-content:space-between; gap:6mm; padding:2.6mm 0; border-bottom:1px solid var(--line-soft); }
+.terms-row .k{ font-family:var(--sans); font-weight:400; font-size:8.6pt; letter-spacing:.05em; text-transform:uppercase; color:#6b6151; }
+.terms-row .v{ font-family:var(--sans); font-weight:400; font-size:9pt; color:var(--espresso); text-align:right; }
+.care{ background:var(--paper); border:1px solid var(--line); border-radius:2px; padding:6mm 7mm; }
+.care .opt{ display:flex; justify-content:space-between; align-items:baseline; padding:2.6mm 0; border-bottom:1px dashed var(--line); }
+.care .opt:last-child{ border-bottom:0; }
+.care .opt .n{ font-family:var(--serif); font-size:11pt; color:var(--espresso); font-weight:500; }
+.care .opt .n small{ display:block; font-family:var(--sans); font-weight:300; font-size:7.8pt; color:#8a7f6c; letter-spacing:.02em; }
+.care .opt .p{ font-family:var(--serif); font-weight:600; font-size:12pt; color:var(--gold-deep); white-space:nowrap; }
+
+.signoff{ margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:8mm; padding-top:7mm; border-top:2px solid var(--espresso); }
+.signoff .msg{ max-width:112mm; }
+.signoff .msg p{ font-family:var(--serif); font-style:italic; font-size:12.5pt; color:var(--espresso); line-height:1.5; font-weight:400; }
+.signoff .who{ text-align:right; }
+.signoff .who .nm{ font-family:var(--serif); font-size:15pt; font-weight:600; color:var(--espresso); }
+.signoff .who .rl{ font-family:var(--sans); font-weight:400; font-size:8pt; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); margin-top:4px; }
+.signoff .who .em{ font-family:var(--sans); font-weight:300; font-size:8.6pt; color:#6b6151; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 · COVER ==================== -->
+<section class="page cover">
+  <div class="cover-bg-word">Impact.</div>
+  <div class="cover-ar">أثـر</div>
+  <div class="pad">
+    <div class="cover-top">
+      <div class="brand-lock">
+        <div class="name">IMPACT <b>HCC</b></div>
+        <div class="sub">Human Capital Consultancy</div>
+      </div>
+      <div class="cover-locale">Dubai<br/>Barcelona</div>
+    </div>
+
+    <div class="cover-mid">
+      <span class="eyebrow on-dark">Website Design &amp; Development · Investment Proposal</span>
+      <h1 class="cover-title">The website,<br/><span class="gold">and what it took</span><br/>to build it.</h1>
+      <p class="cover-sub">A transparent breakdown of the design and engineering behind impact-hcc.com — a bilingual, fully custom web presence — and the fee to develop it.</p>
+    </div>
+
+    <div class="cover-meta">
+      <div>
+        <div class="k">Prepared for</div>
+        <div class="v">Joanna<small>IMPACT HCC</small></div>
+      </div>
+      <div>
+        <div class="k">Prepared by</div>
+        <div class="v">Shishir Babu<small>Design &amp; Development</small></div>
+      </div>
+      <div>
+        <div class="k">Date</div>
+        <div class="v">21 July 2026<small>Valid for 30 days</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PAGE 2 · AT A GLANCE ==================== -->
+<section class="page">
+  <div class="pad">
+    <div class="sec-head">
+      <span class="eyebrow">01 — What you're looking at</span>
+      <h2>Not a template.<br/>A <span class="it">bespoke</span> web presence.</h2>
+      <p class="lead">Before the numbers, it helps to see the shape of what was built. This isn't a five-page brochure on a bought theme — it's a large, hand-coded site in two languages, engineered to match the calibre of the names on your client wall.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">24</div><div class="lab">Pages designed<br/>&amp; built</div></div>
+      <div class="stat"><div class="num">2</div><div class="lab">Languages · English<br/>&amp; Arabic (RTL)</div></div>
+      <div class="stat"><div class="num">7.7<span class="u">k</span></div><div class="lab">Lines of custom<br/>CSS — hand-written</div></div>
+      <div class="stat"><div class="num">47</div><div class="lab">Client &amp; partner<br/>logos prepared</div></div>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <h3><span class="n">A</span>The visible craft</h3>
+        <p>A custom "Gulf-modernist" design language — colour, typography, motion and layout built from scratch for IMPACT HCC. Eleven advisory service pages, six thought-leadership articles, and a home, about, clients, partners and contact experience, each individually composed.</p>
+        <div class="chiprow">
+          <span class="chip">Custom design system</span>
+          <span class="chip">Cormorant · Jost</span>
+          <span class="chip">Scroll motion</span>
+          <span class="chip">Responsive</span>
+        </div>
+      </div>
+      <div>
+        <h3><span class="n">B</span>The invisible engineering</h3>
+        <p>The parts nobody sees but everybody feels: full English⇄Arabic with right-to-left layout, search-engine structured data, accessibility, security headers, image and caching performance, and a deployment set up to be fast and near-free to host.</p>
+        <div class="chiprow">
+          <span class="chip">Bilingual EN / AR</span>
+          <span class="chip">SEO + JSON-LD</span>
+          <span class="chip">Accessibility</span>
+          <span class="chip">Secure hosting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="eyebrow">Why this document exists</span>
+      <p>“So you can see exactly what the fee pays for — line by line — and why a site of this depth, in two languages, is priced the way it is.”</p>
+    </div>
+
+    <div class="foot"><span>IMPACT HCC <span class="dot">·</span> Website Investment Proposal</span><span>02</span></div>
+  </div>
+</section>
+
+<!-- ==================== PAGE 3 · THE INVESTMENT ==================== -->
+<section class="page">
+  <div class="pad">
+    <div class="sec-head">
+      <span class="eyebrow">02 — The investment, split by scope</span>
+      <h2>Where the <span class="it">fee</span> goes.</h2>
+    </div>
+
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th style="width:12mm;">#</th>
+          <th>Scope of work</th>
+          <th class="num" style="width:26mm;">USD</th>
+          <th class="num" style="width:22mm;">≈ AED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="idx">01</td>
+          <td class="item"><div class="t">Discovery &amp; custom design system</div><div class="d">The Gulf-modernist visual language — colour tokens, typography, buttons, components and motion, built from a blank page.</div></td>
+          <td class="usd">$850</td><td class="aed">3,120</td>
+        </tr>
+        <tr>
+          <td class="idx">02</td>
+          <td class="item"><div class="t">Core site — 10 pages</div><div class="d">Home, About, Services index, Clients, Partners, Insights index, Contact (live map), Privacy, Terms &amp; a custom 404.</div></td>
+          <td class="usd">$1,000</td><td class="aed">3,670</td>
+        </tr>
+        <tr>
+          <td class="idx">03</td>
+          <td class="item"><div class="t">11 advisory service pages</div><div class="d">Each service — assessment, compliance, recruitment, wellbeing, training and more — designed and built as its own page.</div></td>
+          <td class="usd">$700</td><td class="aed">2,570</td>
+        </tr>
+        <tr>
+          <td class="idx">04</td>
+          <td class="item"><div class="t">6 Insights articles</div><div class="d">A reusable editorial template plus six populated thought-leadership pieces that position IMPACT HCC as a voice, not a brochure.</div></td>
+          <td class="usd">$400</td><td class="aed">1,470</td>
+        </tr>
+        <tr>
+          <td class="idx">05</td>
+          <td class="item"><div class="t">Bilingual English ⇄ Arabic engine</div><div class="d">Full right-to-left layout, a hand-built translation dictionary across every page, and language signals for search engines.</div></td>
+          <td class="usd">$600</td><td class="aed">2,205</td>
+        </tr>
+        <tr>
+          <td class="idx">06</td>
+          <td class="item"><div class="t">SEO, structured data &amp; performance</div><div class="d">Google structured data (JSON-LD), social previews, sitemap, image optimisation and long-life caching so it ranks and loads fast.</div></td>
+          <td class="usd">$350</td><td class="aed">1,285</td>
+        </tr>
+        <tr>
+          <td class="idx">07</td>
+          <td class="item"><div class="t">Accessibility &amp; responsive engineering</div><div class="d">Keyboard/screen-reader support, focus states, reduced-motion, mobile navigation and testing across phones, tablets and desktop.</div></td>
+          <td class="usd">$250</td><td class="aed">920</td>
+        </tr>
+        <tr>
+          <td class="idx">08</td>
+          <td class="item"><div class="t">Asset preparation</div><div class="d">47 client &amp; partner logos individually sourced, cleaned and normalised; hero and section photography selected and optimised.</div></td>
+          <td class="usd">$200</td><td class="aed">735</td>
+        </tr>
+        <tr>
+          <td class="idx">09</td>
+          <td class="item"><div class="t">Deployment, security &amp; handover</div><div class="d">Go-live on Netlify/Vercel, security headers, clean URLs, and written documentation so the site is yours to run and extend.</div></td>
+          <td class="usd">$150</td><td class="aed">550</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td class="tot-label">Total development fee</td>
+          <td class="tot-usd">$4,500</td>
+          <td class="tot-aed">≈&nbsp;AED&nbsp;16,500</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p class="fx-note">One-time fee for the complete, delivered website. AED shown at the pegged rate (USD 1 ≈ AED 3.6725) for reference — invoiced in USD. Hosting &amp; domain billed at cost (typically USD 0–20 / month).</p>
+
+    <div class="foot"><span>IMPACT HCC <span class="dot">·</span> Website Investment Proposal</span><span>03</span></div>
+  </div>
+</section>
+
+<!-- ==================== PAGE 4 · WHY IT COSTS THIS ==================== -->
+<section class="page">
+  <div class="pad">
+    <div class="sec-head">
+      <span class="eyebrow">03 — Why it's priced this way</span>
+      <h2>Five reasons the number is <span class="it">fair</span>.</h2>
+    </div>
+
+    <div class="why">
+      <div class="why-item">
+        <div class="wn">1</div>
+        <div>
+          <h3>It's custom — every line written by hand.</h3>
+          <p>No WordPress theme, no drag-and-drop builder. All ~7,700 lines of styling were written specifically for IMPACT HCC. That means it's faster, more secure, impossible to mistake for a template ten thousand other firms use — and entirely yours.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wn">2</div>
+        <div>
+          <h3>It's bilingual — and Arabic runs right-to-left.</h3>
+          <p>This isn't a translate button. Every layout mirrors, every line of copy is carried in a dictionary, and Google is told which language serves which region. It roughly doubles the testing. Agencies usually add 40–60% for a second language; here it's folded in.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wn">3</div>
+        <div>
+          <h3>It's a large site, not a five-pager.</h3>
+          <p>Twenty-four pages — including eleven service pages and six articles built individually, not copy-pasted. More surface means more design, more content shaping, and more to keep consistent in both languages.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wn">4</div>
+        <div>
+          <h3>The invisible engineering is the expensive part.</h3>
+          <p>Structured data, accessibility, performance and security are what make a site rank on Google, load instantly, work on every phone and stay safe. You never see them directly — but they decide whether the site actually performs.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="wn">5</div>
+        <div>
+          <h3>You own it outright — no lock-in.</h3>
+          <p>No monthly platform fee, no theme licence, no vendor holding your site hostage. You keep the code, and hosting for a site like this is close to free.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="col a">
+        <div class="lab">A Dubai agency would quote</div>
+        <div class="big">AED 60k – 150k</div>
+        <div class="sm">Same scope, same bilingual build — plus account managers, overhead and margin layered on top.</div>
+      </div>
+      <div class="col b">
+        <div class="lab">This proposal</div>
+        <div class="big">≈ AED 16,500</div>
+        <div class="sm">Roughly a quarter to a tenth — delivered directly, without the agency overhead. Same work, honest price.</div>
+      </div>
+    </div>
+
+    <div class="foot"><span>IMPACT HCC <span class="dot">·</span> Website Investment Proposal</span><span>04</span></div>
+  </div>
+</section>
+
+<!-- ==================== PAGE 5 · INCLUDED + TERMS ==================== -->
+<section class="page">
+  <div class="pad">
+    <div class="sec-head">
+      <span class="eyebrow">04 — What's included &amp; next steps</span>
+      <h2>Everything, delivered and <span class="it">yours</span>.</h2>
+    </div>
+
+    <div class="inc-grid">
+      <div class="inc"><span class="tick">✦</span><span class="txt"><b>24 responsive pages</b> in English &amp; Arabic</span></div>
+      <div class="inc"><span class="tick">✦</span><span class="txt"><b>Full source code</b> &amp; custom design system</span></div>
+      <div class="inc"><span class="tick">✦</span><span class="txt"><b>SEO</b> — structured data, sitemap, social previews</span></div>
+      <div class="inc"><span class="tick">✦</span><span class="txt"><b>Accessibility</b> &amp; cross-device performance pass</span></div>
+      <div class="inc"><span class="tick">✦</span><span class="txt"><b>Deployment</b> with security headers &amp; clean URLs</span></div>
+      <div class="inc"><span class="tick">✦</span><span class="txt"><b>Documentation</b> so your team can edit with ease</span></div>
+    </div>
+
+    <div class="lower">
+      <div class="block">
+        <h3>Terms</h3>
+        <div class="terms-row"><span class="k">Total fee</span><span class="v">USD 4,500 · one-time</span></div>
+        <div class="terms-row"><span class="k">Schedule</span><span class="v">50% to commence · 50% on go-live</span></div>
+        <div class="terms-row"><span class="k">Included revisions</span><span class="v">One round per page</span></div>
+        <div class="terms-row"><span class="k">Hosting &amp; domain</span><span class="v">At cost · ~USD 0–20/mo</span></div>
+        <div class="terms-row"><span class="k">Proposal valid</span><span class="v">30 days from issue</span></div>
+      </div>
+      <div class="block">
+        <h3>Ongoing care <span style="font-family:var(--sans);font-weight:300;font-size:9pt;color:#8a7f6c;letter-spacing:.04em;">— optional</span></h3>
+        <div class="care">
+          <div class="opt"><span class="n">Pay-as-you-go edits<small>Content &amp; small changes, as needed</small></span><span class="p">$40/hr</span></div>
+          <div class="opt"><span class="n">Light care retainer<small>Up to 3 hrs/mo · updates &amp; monitoring</small></span><span class="p">$150/mo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="signoff">
+      <div class="msg">
+        <p>“Thank you, Joanna. It's been a genuine pleasure building something worthy of the IMPACT HCC name — I'm glad to walk through any line of this together.”</p>
+      </div>
+      <div class="who">
+        <div class="nm">Shishir Babu</div>
+        <div class="rl">Design &amp; Development</div>
+        <div class="em">mr.shishirbabu@gmail.com</div>
+      </div>
+    </div>
+
+    <div class="foot" style="margin-top:9mm;"><span>IMPACT HCC <span class="dot">·</span> Website Investment Proposal</span><span>05</span></div>
+  </div>
+</section>
+
+</body>
+</html>
