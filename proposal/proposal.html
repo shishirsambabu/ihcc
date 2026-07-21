@@ -132,8 +132,9 @@ em{ font-style:italic; }
 
 /* ============================ WHAT IT BECAME ============================ */
 .stats{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:1mm 0 8mm; }
-.stat{ padding:6.5mm 4mm 6.5mm 0; border-right:1px solid var(--line-soft); }
-.stat:last-child{ border-right:0; }
+.stat{ padding:6.5mm 5mm; border-right:1px solid var(--line-soft); }
+.stat:first-child{ padding-left:0; }
+.stat:last-child{ border-right:0; padding-right:0; }
 .stat .num{ font-family:var(--serif); font-weight:600; font-size:31pt; color:var(--espresso); line-height:1; }
 .stat .num .u{ font-size:14pt; color:var(--gold-deep); }
 .stat .lab{ margin-top:5px; font-family:var(--sans); font-weight:400; font-size:7.8pt; letter-spacing:.1em; text-transform:uppercase; color:#6b6151; line-height:1.4; }
@@ -163,8 +164,8 @@ em{ font-style:italic; }
 .tot-usd{ text-align:right; font-family:var(--serif); font-weight:600; font-size:22pt; color:var(--espresso); }
 .tot-aed{ text-align:right; font-family:var(--sans); font-weight:400; font-size:8.6pt; color:var(--gold-deep); letter-spacing:.04em; }
 
-.value-band{ margin-top:4.5mm; display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); border-radius:2px; overflow:hidden; }
-.value-band .col{ padding:5mm 7mm; }
+.value-band{ margin-top:4.5mm; flex-shrink:0; display:grid; grid-template-columns:1fr 1fr; align-items:stretch; border:1px solid var(--line); border-radius:2px; overflow:hidden; }
+.value-band .col{ padding:5.5mm 7mm; display:flex; flex-direction:column; }
 .value-band .col.a{ background:var(--paper); border-right:1px solid var(--line); }
 .value-band .col.b{ background:var(--espresso); color:var(--cream); }
 .value-band .lab{ font-family:var(--sans); font-weight:500; font-size:7.4pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:3mm; }
@@ -173,6 +174,8 @@ em{ font-style:italic; }
 .value-band .col.b .big{ color:var(--cream); }
 .value-band .sm{ font-family:var(--sans); font-weight:300; font-size:8.3pt; color:#6b6151; margin-top:2mm; line-height:1.48; }
 .value-band .col.b .sm{ color:rgba(244,238,228,.72); }
+.value-band .cap{ margin-top:auto; padding-top:4mm; font-family:var(--sans); font-weight:500; font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); }
+.value-band .col.b .cap{ color:var(--gold); }
 .fx-note{ font-family:var(--sans); font-weight:300; font-size:7.6pt; color:#8a7f6c; margin-top:4mm; letter-spacing:.03em; line-height:1.5; }
 
 /* ============================ CLOSE ============================ */
@@ -387,11 +390,13 @@ em{ font-style:italic; }
         <div class="lab">A Dubai agency would quote</div>
         <div class="big">AED 60k – 150k</div>
         <div class="sm">Same scope, same bilingual build — plus account managers, overhead and margin on top.</div>
+        <div class="cap">Full-service agency rate</div>
       </div>
       <div class="col b">
         <div class="lab">This proposal</div>
         <div class="big">≈ AED 16,500</div>
-        <div class="sm">A fraction of it — not because it's worth less, but because the strategy is mine and the execution was AI-accelerated. Senior thinking, efficient hands.</div>
+        <div class="sm">A fraction of that — because the strategy is mine and the build was AI-accelerated.</div>
+        <div class="cap">Senior thinking, efficient hands</div>
       </div>
     </div>
 
